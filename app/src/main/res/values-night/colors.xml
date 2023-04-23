@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Main Colors -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#0e1111</color>
+    <color name="light_black">#222830</color>
+    <color name="holo_orange_light">#ffffbb33</color>
+    <color name="holo_orange_dark">#ffff8800</color>
+    <color name="holo_green_light">#ff99cc00</color>
+    <color name="holo_green_dark">#ff669900</color>
+    <color name="red">#FF0000</color>
+    <color name="grey">#b4bcbf</color>
+
+    <color name="main_app_color">@color/holo_orange_dark</color>
+    <color name="ic_launcher_background">@color/holo_orange_dark</color>
+    <color name="splash_background">@color/holo_orange_dark</color>
+
+    <!-- main_activity -->
+    <color name="main_background">@color/light_black</color>
+    <color name="task_title">#30455A</color>
+    <color name="add_task_btn">@color/holo_orange_dark</color>
+    <color name="add_icon">@color/main_background</color>
+
+    <!-- new_task --> <!-- task_dialog -->
+    <color name="task_dialog_bg">@color/main_background</color>
+    <color name="add_task_text">@color/task_text</color>
+    <color name="pre_save_task">#A9A9A9</color>
+    <color name="save_task">@color/holo_orange_dark</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- task_layout -->
+    <color name="task_bg">#28425C</color>
+    <color name="task_check_box">@color/holo_orange_dark</color>
+    <color name="task_text">#767B8E</color>
+
+    <!-- task edit -->
+    <color name="edit_task">@color/holo_green_dark</color>
+    <color name="delete_task">@color/red</color>
+    <color name="dialog_bg">#222830</color>
+    <color name="negative_btn">#28425C</color>
+    <color name="positive_btn">#28425C</color>
+</resources>

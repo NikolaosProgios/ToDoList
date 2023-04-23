@@ -1,0 +1,36 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/medium_margin"
+    android:layout_marginVertical="@dimen/small_margin"
+    app:cardCornerRadius="@dimen/small_corner_radius"
+    app:cardElevation="4dp">
+
+    <RelativeLayout
+        android:id="@+id/task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/task_bg"
+        android:padding="@dimen/padding_small">
+
+        <CheckBox
+            android:id="@+id/todoCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:buttonTint="@color/task_check_box" />
+
+        <TextView
+            android:id="@+id/task_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/small_margin"
+            android:layout_toEndOf="@id/todoCheckBox"
+            android:textColor="@color/task_text"
+            tools:text="Here will show your new tasks. Let's get started adding one now." />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

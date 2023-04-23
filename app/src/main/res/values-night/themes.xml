@@ -1,0 +1,13 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.ToDoList" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">@color/light_black</item>
+        <item name="colorPrimaryDark">@color/main_app_color</item>
+    </style>
+
+    <style name="DialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+</resources>

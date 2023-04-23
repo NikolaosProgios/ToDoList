@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/task_dialog_bg"
+    android:orientation="vertical"
+    android:padding="10dp">
+    <!--android:background="@drawable/rectangle_transparent_corners"-->
+
+    <TextView
+        android:id="@+id/task_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center|center_horizontal"
+        android:paddingBottom="@dimen/padding_large_x"
+        android:textColor="@color/add_task_text"
+        android:textSize="@dimen/text_medium_x"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/task_dialog_text_body_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/task_dialog_title"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/padding_medium"
+        android:layout_marginEnd="@dimen/padding_medium"
+        android:layout_marginBottom="@dimen/padding_big"
+        android:background="@drawable/rectangle_grey_corners"
+        android:gravity="top|start"
+        android:hint="@string/new_task"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:padding="@dimen/padding_micro"
+        android:scrollbars="vertical"
+        android:textSize="@dimen/text_small" />
+<!--
+    <EditText
+        android:id="@+id/task_dialog_text_title_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/task_dialog_title"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/padding_medium"
+        android:background="@drawable/rectangle_grey_corners"
+        android:gravity="top|start"
+        android:hint="@string/add_title"
+        android:inputType="textMultiLine"
+        android:lines="2"
+        android:padding="@dimen/padding_micro"
+        android:scrollbars="vertical"
+        android:textSize="@dimen/text_small" />
+
+    <EditText
+        android:id="@+id/task_dialog_text_body_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/task_dialog_text_title_et"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/padding_medium"
+        android:layout_marginEnd="@dimen/padding_medium"
+        android:layout_marginBottom="@dimen/padding_big"
+        android:background="@drawable/rectangle_grey_corners"
+        android:gravity="top|start"
+        android:hint="@string/add_note"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:padding="@dimen/padding_micro"
+        android:scrollbars="vertical"
+        android:textSize="@dimen/text_small" />
+-->
+    <Button
+        android:id="@+id/task_dialog_save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/task_dialog_text_body_et"
+        android:layout_alignParentEnd="true"
+        android:background="@color/transparent"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/pre_save_task"
+        android:textSize="@dimen/text_small" />
+</RelativeLayout>
