@@ -11,7 +11,11 @@
     <string name="new_x">New</string>
 
     <string name="delete_task_title">Delete Task</string>
-    <string name="delete_task_body">Are you sure you want to delete this Task?</string>
+    <string name="delete_task_message">Are you sure you want to delete this Task?</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+
+    <string name="modify_task_title">Modify Task</string>
+    <string name="modify_task_message">You want to edit or delete the task? </string>
+    <string name="delete">Delete</string>
 </resources>

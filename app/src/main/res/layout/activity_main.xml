@@ -14,7 +14,7 @@
         android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginTop="@dimen/medium_margin"
         android:text="@string/tasks"
-        android:textColor="@color/task_title"
+        android:textColor="@color/task_text_color"
         android:textSize="@dimen/text_large"
         android:textStyle="bold" />
 

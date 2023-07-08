@@ -37,10 +37,12 @@ class TaskDialog : DialogFragment() {
         val bundle = arguments
         bundle?.let {
             isUpdate = true
-            val task = bundle.getString("task")
-            binding.taskDialogTextBodyEt.setText(task)
+            val title = bundle.getString("title")
+            val note = bundle.getString("note")
+            binding.taskDialogTextTitleEt.setText(title)
+            binding.taskDialogTextBodyEt.setText(note)
             binding.taskDialogTitle.text = getString(R.string.task_title,getString(R.string.edit))
-            if (task != null && task.isNotEmpty()) {
+            if (note != null && note.isNotEmpty() || title != null && title.isNotEmpty() ) {
                 binding.taskDialogSaveBtn.setTextColor(
                     ContextCompat.getColor(requireContext(), R.color.edit_task)
                 )
@@ -50,14 +52,16 @@ class TaskDialog : DialogFragment() {
         activity?.let { db = DatabaseHandler(it) }
         db.openDatabase()
 
+        binding.taskDialogTextTitleEt.addTextChangedListener(textWatcher)
         binding.taskDialogTextBodyEt.addTextChangedListener(textWatcher)
 
         binding.taskDialogSaveBtn.setOnClickListener {
-            val text = binding.taskDialogTextBodyEt.text.toString()
+            val title = binding.taskDialogTextTitleEt.text.toString()
+            val note = binding.taskDialogTextBodyEt.text.toString()
             if (isUpdate) {
-                bundle?.getInt("id")?.let { it1 -> db.updateTask(it1, text) }
+                bundle?.getInt("id")?.let { it1 -> db.updateTask(it1, title, note) }
             } else {
-                db.insertTask(ToDoModel(text = text, status = 0))
+                db.insertTask(ToDoModel(title = title, note = note, status = 0))
             }
             dismiss()
         }
@@ -88,6 +92,7 @@ class TaskDialog : DialogFragment() {
             (activity as DialogCloseListener).handleDialogClose(dialog)
         }
     }
+
     companion object {
         val TAG = "DialogFragment"
         fun newInstance() = TaskDialog()

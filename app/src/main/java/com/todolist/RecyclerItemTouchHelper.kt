@@ -3,20 +3,26 @@ package com.todolist
 import android.graphics.Canvas
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.todolist.adapters.ToDoAdapter
 
-class RecyclerItemTouchHelper(private val adapter: ToDoAdapter) :
-    ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+class RecyclerItemTouchHelper(private val adapter: ToDoAdapter) : ItemTouchHelper.Callback() {
 
     private val context = adapter.getContext()
 
-    override fun onMove(
+    override fun getMovementFlags(
         recyclerView: RecyclerView,
-        viewHolder: RecyclerView.ViewHolder,
+        viewHolder: RecyclerView.ViewHolder
+    ): Int {
+        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
+        val swipeFlags = ItemTouchHelper.END  or ItemTouchHelper.START
+        return makeMovementFlags(dragFlags, swipeFlags)
+    }
+
+    override fun onMove(
+        recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
         return false
@@ -24,29 +30,10 @@ class RecyclerItemTouchHelper(private val adapter: ToDoAdapter) :
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val position = viewHolder.adapterPosition
-        if (direction == ItemTouchHelper.LEFT) {
-            val builder = AlertDialog.Builder(context)
-            with(builder) {
-                setTitle(R.string.delete_task_title)
-                setMessage(R.string.delete_task_body)
-                setPositiveButton(R.string.confirm) { dialog, which -> adapter.deleteItem(position) }
-                setNegativeButton(R.string.cancel) { dialog, which ->
-                    adapter.notifyItemChanged(position)
-                }
-            }
-            val dialog = builder.create()
-            with(dialog) {
-                setOnShowListener {
-                    window?.setBackgroundDrawableResource(R.color.dialog_bg)
-                    getButton(AlertDialog.BUTTON_NEGATIVE)
-                        .setTextColor(ContextCompat.getColor(context, R.color.negative_btn))
-                    getButton(AlertDialog.BUTTON_POSITIVE)
-                        .setTextColor(ContextCompat.getColor(context, R.color.positive_btn))
-                }
-                show()
-            }
-        } else {
+        if (direction == RIGHT) {
             adapter.editItem(position)
+        } else if (direction == LEFT){
+            adapter.deleteItem(position)
         }
     }
 
@@ -95,5 +82,10 @@ class RecyclerItemTouchHelper(private val adapter: ToDoAdapter) :
         }
         background.draw(canvas)
         icon.draw(canvas)
+    }
+
+    companion object {
+        private const val RIGHT = ItemTouchHelper.END
+        private const val LEFT = ItemTouchHelper.START
     }
 }

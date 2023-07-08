@@ -37,16 +37,14 @@ class MainActivity : AppCompatActivity(), DialogCloseListener {
         val itemTouchHelper = ItemTouchHelper(RecyclerItemTouchHelper(tasksAdapter))
         itemTouchHelper.attachToRecyclerView(binding.tasksRecyclerView)
 
-        binding.addTask.setOnClickListener {
-//            AddNewTask.newInstance().show(supportFragmentManager, AddNewTask.TAG)
-            TaskDialog.newInstance().show(supportFragmentManager, TaskDialog.TAG)
-        }
-
         taskList = db.getAllTasks()
         taskList.reverse()
 
         tasksAdapter.setTasks(taskList)
 
+        binding.addTask.setOnClickListener {
+            TaskDialog.newInstance().show(supportFragmentManager, TaskDialog.TAG)
+        }
     }
 
     override fun handleDialogClose(dialog: DialogInterface?) {

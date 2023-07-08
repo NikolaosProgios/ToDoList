@@ -20,25 +20,7 @@
         android:textSize="@dimen/text_medium_x"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/task_dialog_text_body_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/task_dialog_title"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="@dimen/padding_medium"
-        android:layout_marginEnd="@dimen/padding_medium"
-        android:layout_marginBottom="@dimen/padding_big"
-        android:background="@drawable/rectangle_grey_corners"
-        android:gravity="top|start"
-        android:hint="@string/new_task"
-        android:inputType="textMultiLine"
-        android:lines="5"
-        android:padding="@dimen/padding_micro"
-        android:scrollbars="vertical"
-        android:textSize="@dimen/text_small" />
-<!--
+
     <EditText
         android:id="@+id/task_dialog_text_title_et"
         android:layout_width="match_parent"
@@ -46,7 +28,10 @@
         android:layout_below="@id/task_dialog_title"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="@dimen/padding_medium"
+        android:layout_marginStart="@dimen/padding_medium"
+        android:layout_marginTop="@dimen/padding_medium"
+        android:layout_marginEnd="@dimen/padding_medium"
+        android:layout_marginBottom="@dimen/padding_medium"
         android:background="@drawable/rectangle_grey_corners"
         android:gravity="top|start"
         android:hint="@string/add_title"
@@ -74,7 +59,7 @@
         android:padding="@dimen/padding_micro"
         android:scrollbars="vertical"
         android:textSize="@dimen/text_small" />
--->
+
     <Button
         android:id="@+id/task_dialog_save_btn"
         android:layout_width="wrap_content"

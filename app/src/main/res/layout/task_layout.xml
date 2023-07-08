@@ -24,13 +24,43 @@
             android:buttonTint="@color/task_check_box" />
 
         <TextView
-            android:id="@+id/task_text"
+            android:id="@+id/task_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_margin="@dimen/small_margin"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
             android:layout_toEndOf="@id/todoCheckBox"
-            android:textColor="@color/task_text"
-            tools:text="Here will show your new tasks. Let's get started adding one now." />
+            android:textColor="@color/task_title"
+            android:textStyle="bold"
+            tools:text="TASK TITLE" />
+        <!--
+                <TextView
+                    android:id="@+id/task_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottomEnd="true"
+                    android:layout_margin="@dimen/small_margin"
+                    android:layout_toEndOf="@id/todoCheckBox"
+                    android:textColor="@color/task_note"
+                    tools:text="TASK TITLE" />
+        -->
+        <TextView
+            android:id="@+id/task_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_title"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:layout_toEndOf="@id/todoCheckBox"
+            android:textColor="@color/task_note"
+            tools:text="TASK NOTE" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

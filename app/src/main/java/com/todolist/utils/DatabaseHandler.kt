@@ -6,20 +6,30 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Toast
 import com.todolist.models.ToDoModel
+
+
+/**
+context: Context)
+private var context = context
+
+MIX
+
+ */
+
 
 class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, NAME, null, VERSION) {
 
     private lateinit var db: SQLiteDatabase
+    private var context = context
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TODO_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS $TODO_TABLE")
-        // Create tables again
         onCreate(db)
     }
 
@@ -29,7 +39,8 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, NAME, null, 
 
     fun insertTask(task: ToDoModel) {
         val cv = ContentValues()
-        cv.put(TASK, task.text)
+        cv.put(TITLE, task.title)
+        cv.put(NOTE, task.note)
         cv.put(STATUS, 0)
         db.insert(TODO_TABLE, null, cv)
     }
@@ -38,7 +49,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, NAME, null, 
     fun getAllTasks(): ArrayList<ToDoModel> {
         val taskList: ArrayList<ToDoModel> = ArrayList()
         var cur: Cursor? = null
-        db.beginTransaction()
+        try { db.beginTransaction() } catch (e:Exception){}
         try {
             cur = db.query(
                 TODO_TABLE, null, null, null, null, null, null, null
@@ -48,14 +59,20 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, NAME, null, 
                     do {
                         val task = ToDoModel(
                             id = cur.getInt(cur.getColumnIndex(ID)),
-                            text = cur.getString(cur.getColumnIndex(TASK)),
+                            title = cur.getString(cur.getColumnIndex(TITLE)),
+                            note = cur.getString(cur.getColumnIndex(NOTE)),
                             status = cur.getInt(cur.getColumnIndex(STATUS))
                         )
                         taskList.add(task)
                     } while (cur.moveToNext())
                 }
             }
-        } finally {
+        }
+        catch (e:Exception){
+            Toast.makeText(context, "Something goes wrong! Please close and re-open the app.", Toast.LENGTH_LONG).show()
+            println("Exception $e")
+        }
+        finally {
             if (cur != null) {
                 db.endTransaction()
                 assert(cur != null)
@@ -71,9 +88,10 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, NAME, null, 
         db.update(TODO_TABLE, cv, "$ID= ?", arrayOf(id.toString()))
     }
 
-    fun updateTask(id: Int, task: String?) {
+    fun updateTask(id: Int, title: String?, note: String?) {
         val cv = ContentValues()
-        cv.put(TASK, task)
+        cv.put(TITLE, title)
+        cv.put(NOTE, note)
         db.update(TODO_TABLE, cv, "$ID= ?", arrayOf(id.toString()))
     }
 
@@ -81,16 +99,19 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, NAME, null, 
         db.delete(TODO_TABLE, "$ID= ?", arrayOf(id.toString()))
     }
 
-
     companion object {
         private val VERSION = 1
-        private val NAME = "toDoListDatabase"
-        private val TODO_TABLE = "todo"
-        private val ID = "id"
-        private val TASK = "task"
-        private val STATUS = "status"
-        private val CREATE_TODO_TABLE =
-            ("CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + TASK + " TEXT, " + STATUS + " INTEGER)")
+        private const val NAME = "toDoListDatabase"
+        private const val TODO_TABLE = "todo"
+        private const val ID = "id"
+        private const val TITLE = "title"
+        private const val NOTE = "note"
+        private const val STATUS = "status"
+        private const val CREATE_TODO_TABLE = ("CREATE TABLE " +
+                TODO_TABLE + "(" +
+                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                TITLE  + " TEXT, " +
+                NOTE   + " TEXT, " +
+                STATUS + " INTEGER)")
     }
 }

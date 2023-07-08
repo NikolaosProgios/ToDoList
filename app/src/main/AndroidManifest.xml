@@ -9,8 +9,7 @@
         android:theme="@style/Theme.ToDoList">
         <activity
             android:name=".SplashActivity"
-            android:exported="true"
-            android:screenOrientation="portrait">
+            android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.MAIN" />

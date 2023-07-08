@@ -17,13 +17,13 @@
 
     <!-- main_activity -->
     <color name="main_background">@color/white</color>
-    <color name="task_title">@color/black</color>
+    <color name="task_text_color">@color/black</color>
     <color name="add_task_btn">@color/holo_orange_light</color>
     <color name="add_icon">@color/white</color>
 
     <!-- new_task --> <!-- task_dialog -->
     <color name="task_dialog_bg">@color/main_background</color>
-    <color name="add_task_text">@color/task_text</color>
+    <color name="add_task_text">@color/task_title</color>
     <color name="pre_save_task">#A9A9A9</color>
     <color name="save_task">@color/holo_orange_light</color>
     <color name="transparent">#00000000</color>
@@ -31,12 +31,16 @@
     <!-- task_layout -->
     <color name="task_bg">@color/white</color>
     <color name="task_check_box">@color/holo_orange_light</color>
-    <color name="task_text">@color/light_black</color>
+    <color name="task_title">@color/light_black</color>
+    <color name="task_note">@color/light_black</color>
+
 
     <!-- task edit -->
     <color name="edit_task">@color/holo_green_light</color>
     <color name="delete_task">@color/red</color>
     <color name="dialog_bg">@color/white</color>
-    <color name="negative_btn">@color/black</color>
     <color name="positive_btn">@color/black</color>
+    <color name="neutral_btn">@color/black</color>
+    <color name="negative_btn">@color/black</color>
+
 </resources>
